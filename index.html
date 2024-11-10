@@ -55,9 +55,41 @@
             width: 100%;
             bottom: 0;
         }
+        /* Styling for the mobile warning popup */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffcc00;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            z-index: 9999;
+        }
+        .popup button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .popup button:hover {
+            background-color: #555;
+        }
     </style>
 </head>
 <body>
+    <!-- Popup warning for mobile users -->
+    <div id="mobile-warning-popup" class="popup">
+        <h3>Warning!</h3>
+        <p>This website is intended for desktop computers, not mobile devices.</p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
     <header>
         <h1>XPDevs Web Preview Tool</h1>
         <p>Create, test, and preview your HTML, CSS, and JavaScript in real-time on a mobile device simulation.</p>
@@ -96,25 +128,41 @@
         </ul>
         <p>Whether you're learning web development, building a prototype, or testing a new feature, this tool helps you visualize your project quickly and efficiently.</p>
     </section>
-<section class="documentation">
-<div class="intro-section">
-  <h2>About XPDevs</h2>
-  <p>XPDevs is a dedicated platform for developers, offering a range of tools designed to streamline development workflows and enhance productivity. One of the tools we've created is this HTML Mobile Preview tool, allowing you to test and preview your HTML code in a mobile-like environment.</p>
-  <p>XPDevs aims to provide simple, accessible, and powerful solutions to web developers and enthusiasts alike.</p>
-  <a href="https://xpdevs.github.io/Doors-Operating-System/home.html#about" class="read-more-link" target="_blank">Read more about XPDevs and explore more tools</a>
-</div>
-</section>
+    <section class="documentation">
+        <div class="intro-section">
+            <h2>About XPDevs</h2>
+            <p>XPDevs is a dedicated platform for developers, offering a range of tools designed to streamline development workflows and enhance productivity. One of the tools we've created is this HTML Mobile Preview tool, allowing you to test and preview your HTML code in a mobile-like environment.</p>
+            <p>XPDevs aims to provide simple, accessible, and powerful solutions to web developers and enthusiasts alike.</p>
+            <a href="https://xpdevs.github.io/Doors-Operating-System/home.html#about" class="read-more-link" target="_blank">Read more about XPDevs and explore more tools</a>
+        </div>
+    </section>
+
     <section class="editor-link">
         <h2>Ready to Start?</h2>
         <p>Click the button below to begin coding and previewing your HTML, CSS, and JavaScript in a mobile simulation.</p>
         <button onclick="window.location.href='mobile.html'">Start Simulating</button>
-<br>
-<br>
-<br>
+        <br><br><br>
     </section>
 
     <footer>
         <p>&copy; 2024 XPDevs. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Function to detect if the user is on a mobile device
+        function isMobile() {
+            return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|Windows Phone|Opera Mini|IEMobile/i.test(navigator.userAgent);
+        }
+
+        // Show the mobile warning popup if the user is on a mobile device
+        if (isMobile()) {
+            document.getElementById('mobile-warning-popup').style.display = 'block';
+        }
+
+        // Function to close the popup
+        function closePopup() {
+            document.getElementById('mobile-warning-popup').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
